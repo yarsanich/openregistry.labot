@@ -144,16 +144,6 @@ def error_handler(errors, request_params=True):
     return json_error(errors)
 
 
-opresource = partial(resource, error_handler=error_handler,
-                     factory=resource_factory)
-eaopresource = partial(resource, error_handler=error_handler,
-                       factory=resource_factory)
-contractingresource = partial(resource, error_handler=error_handler,
-                              factory=resource_factory)
-planningresource = partial(resource, error_handler=error_handler,
-                           factory=resource_factory)
-
-
 def push_views(couchapp_path=None, couch_url=None):
     if couchapp_path is None or couch_url is None:
         raise Exception('Can\'t push couchapp. Please check \'couchapp_path\''

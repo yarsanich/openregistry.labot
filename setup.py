@@ -3,17 +3,50 @@ import os
 
 version = '0.1'
 
+here = os.path.abspath(os.path.dirname(__file__))
+
+requires = [
+    'cornice',
+    'gevent',
+    'pyramid_exclog',
+    'setuptools',
+    'couchdb',
+    'couchapp',
+    'pycrypto',
+    'openprocurement_client',
+    'munch',
+    'tzlocal',
+    'pyyaml',
+    'psutil',
+    'iso8601'
+]
+test_requires = requires + [
+    'requests',
+    'webtest',
+    'python-coveralls',
+    'nose',
+    'mock'
+]
+
+entry_points = {
+    'console_scripts': [
+        'labot_data_bridge = openregistry.labot.databridge:main'
+    ]
+}
+
+
 setup(name='openregistry.labot',
       version=version,
       description="openregistry.labot",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from
-      # http://pypi.python.org/pypi?:action=list_classifiers
+      long_description=open("README.txt").read() + "\n",
       classifiers=[
-        "Programming Language :: Python",
-        ],
-      keywords='',
+         "Framework :: Pylons",
+         "License :: OSI Approved :: Apache Software License",
+         "Programming Language :: Python",
+         "Topic :: Internet :: WWW/HTTP",
+         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application"
+      ],
+      keywords='web services',
       author='Quintagroup, Ltd.',
       author_email='info@quintagroup.com',
       url="https://github.com/openprocurement/",
@@ -21,12 +54,9 @@ setup(name='openregistry.labot',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['openregistry'],
       include_package_data=True,
-      zip_safe=True,
-      install_requires=[
-          'setuptools',
-          # -*- Extra requirements: -*-
-      ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      zip_safe=False,
+      install_requires=requires,
+      tests_require=test_requires,
+      extras_require={'test': test_requires},
+      entry_points=entry_points,
       )
