@@ -15,7 +15,7 @@ from yaml import load
 from urlparse import urlparse
 from openprocurement_client.sync import ResourceFeeder
 from openprocurement_client.exceptions import RequestFailed
-from openprocurement_client.client import TendersClient as APIClient
+from openprocurement_client.registry_client import RegistryClient as APIClient
 from .utils import (
     prepare_couchdb,
     prepare_couchdb_views,
@@ -37,7 +37,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 WORKER_CONFIG = {
-    'resource': 'tenders',
+    'resource': 'lots',
     'client_inc_step_timeout': 0.1,
     'client_dec_step_timeout': 0.02,
     'drop_threshold_client_cookies': 2,
