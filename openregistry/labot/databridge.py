@@ -36,6 +36,7 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+
 WORKER_CONFIG = {
     'resource': 'lots',
     'client_inc_step_timeout': 0.1,
